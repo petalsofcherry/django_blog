@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="查找">
+    </form>
+{% for article in articles %}
+    <a href="{% url 'blog' article.id %}">{{ article.title }}</a><br>
+{% endfor %}
+    <div class="pager">
+		{% if articles.has_previous %}
+			<a class="round pre" href="?page={{ articles.previous_page_number }}">上一页</a>
+		{% endif %}
+
+		{% if articles.has_next %}
+			<a class="round next" href="?page={{ articles.next_page_number }}">下一页</a>
+		{% endif %}
+    </div>
+<a href="{% url 'editBlog'  blog_id=0 %}">发布新文章</a>
+</body>
+</html>

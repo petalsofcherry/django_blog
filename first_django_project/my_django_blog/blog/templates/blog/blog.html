@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>the_blog</title>
+</head>
+<body>
+{% if article %}
+    <p>{{ article.title }}</p>
+    <p>{{ article.publish_time }}</p>
+    <p>{{ article.content }}</p>
+    <a href="{% url 'editBlog' article.id %}">修改文章</a>
+    <a href="{% url 'delete' article.id %}">删除文章</a>
+{% endif %}
+</body>
+</html>
